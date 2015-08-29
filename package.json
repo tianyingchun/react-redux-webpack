@@ -1,20 +1,21 @@
 {
-  "name": "todomvc",
+  "name": "react-redux-webpack",
   "version": "0.0.0",
-  "description": "TodoMVC example for redux",
+  "description": " The react example for redux using webpack",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/redux.git"
+    "url": "https://github.com/tianyingchun/react-redux-webpack.git"
   },
   "keywords": [
     "react",
     "reactjs",
     "hot",
     "reload",
+    "redux",
     "hmr",
     "live",
     "edit",
@@ -23,9 +24,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/redux/issues"
+    "url": "https://github.com/tianyingchun/react-redux-webpack/issues"
   },
-  "homepage": "https://github.com/gaearon/redux#readme",
+  "homepage": "https://github.com/tianyingchun/react-redux-webpack#readme",
   "dependencies": {
     "classnames": "^2.1.2",
     "react": "^0.13.3",
