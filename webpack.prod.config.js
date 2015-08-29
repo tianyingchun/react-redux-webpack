@@ -18,7 +18,8 @@ config.plugins = config.plugins.concat([
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
     compress: {
-      screw_ie8: true,
+      // maybe we need to compatible with ie8
+      screw_ie8: false,
       dead_code: true,
       warnings: false,
       drop_console: true
