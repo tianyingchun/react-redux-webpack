@@ -1,33 +1,31 @@
-var path = require('path');
-var webpack = require('webpack');
+'use strict';
 
-module.exports = {
-  devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './index'
-  ],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: 'http://localhost:3000/static/'
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-  resolve: {
-    extensions: ['', '.js','.jsx']
-  },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      exclude: /node_modules/
-    }, {
-      test: /\.css?$/,
-      loaders: ['style', 'raw']
-    }]
-  }
-};
+var webpack = require('webpack');
+var baseConfig = require('./webpack.base.config');
+
+var config = Object.create(baseConfig);
+
+// The production plugin definitions.
+config.plugins = config.plugins.concat([
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('production')
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'library',
+    filename: 'react-kits.js',
+    minChunks: Infinity
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    compress: {
+      screw_ie8: true,
+      dead_code: true,
+      warnings: false,
+      drop_console: true
+    }
+  })
+]);
+config.module.loaders.push({ test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ });
+
+
+module.exports = config;

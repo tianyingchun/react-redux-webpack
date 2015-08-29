@@ -1,9 +1,9 @@
 import React from 'react';
 import App from './containers/App';
-import './css/bootstrap.css';
-import './css/index.css';
+import './less/index.css';
+import './less/sample.less';
 
-React.render(
-  <App />,
+
+React.render( <App /> ,
   document.getElementById('root')
 );
