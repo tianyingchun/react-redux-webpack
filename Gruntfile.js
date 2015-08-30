@@ -1,43 +1,34 @@
+var webpack = require('webpack');
+var webpackDevConfig = require('./webpack.dev.config');
+var webpackProdConfig = require('./webpack.prod.config');
+
 module.exports = function (grunt) {
-  var webpack = require("webpack");
-  var webpackConfig = require("./webpack.config.js");
+
   grunt.initConfig({
     webpack: {
-      options: webpackConfig,
-      build: {
-        plugins: webpackConfig.plugins.concat(
-          new webpack.DefinePlugin({
-            "process.env": {
-              // This has effect on the react lib size
-              "NODE_ENV": JSON.stringify("production")
-            }
-          }),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.UglifyJsPlugin()
-        )
-      },
-      "build-dev": {
-        devtool: "sourcemap",
-        debug: true
-      }
+      dev: webpackDevConfig,
+      prod: webpackProdConfig
     },
-    "webpack-dev-server": {
+    'webpack-dev-server': {
       options: {
-        webpack: webpackConfig,
-        publicPath: "/" + webpackConfig.output.publicPath
+        webpack: webpackDevConfig,
+        publicPath: webpackDevConfig.output.publicPath
       },
       start: {
         keepAlive: true,
-        webpack: {
-          devtool: "eval",
-          debug: true
+        hot: true,
+        historyApiFallback: true,
+        host: 'localhost',
+        port: 3000,
+        stats: {
+          colors: true
         }
       }
     },
     watch: {
       app: {
-        files: ["app/**/*", "web_modules/**/*"],
-        tasks: ["webpack:build-dev"],
+        files: ['**/*.js'],
+        tasks: ['webpack:dev'],
         options: {
           spawn: false,
         }
@@ -49,14 +40,14 @@ module.exports = function (grunt) {
 
 
   // The development server (the recommended option for development)
-  grunt.registerTask("default", ["webpack-dev-server:start"]);
+  grunt.registerTask('default', ['webpack-dev-server:start']);
 
   // Build and watch cycle (another option for development)
   // Advantage: No server required, can run app from filesystem
   // Disadvantage: Requests are not blocked until bundle is available,
   //               can serve an old app on too fast refresh
-  grunt.registerTask("dev", ["webpack:build-dev", "watch:app"]);
+  grunt.registerTask('dev', ['webpack:dev', 'watch:app']);
 
   // Production build
-  grunt.registerTask("build", ["webpack:build"]);
+  grunt.registerTask('prod', ['webpack:prod']);
 };

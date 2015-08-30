@@ -5,6 +5,8 @@ var baseConfig = require('./webpack.base.config');
 
 var config = Object.create(baseConfig);
 
+// Add source mapping for debuging.
+config.devtool = 'source-map';
 //  Provider special entry point in development phase,
 //  it will be able to get live reloads when doing changes to our source code.
 config.entry.bundle.unshift('webpack/hot/only-dev-server');
