@@ -1,19 +1,15 @@
 'use strict';
 
+var _ = require('lodash');
 var webpack = require('webpack');
 var baseConfig = require('./webpack.base.config');
 
-var config = Object.create(baseConfig);
+var config = baseConfig();
 
-// The production plugin definitions.
+// plugins for production
 config.plugins = config.plugins.concat([
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
-  }),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'library',
-    filename: 'react-kits.js',
-    minChunks: Infinity
   }),
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
@@ -26,7 +22,12 @@ config.plugins = config.plugins.concat([
     }
   })
 ]);
-config.module.loaders.push({ test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ });
 
+// loaders for production
+config.module.loaders.push({
+  test: /\.js$/,
+  loaders: ['babel-loader'],
+  exclude: /node_modules/
+});
 
 module.exports = config;
