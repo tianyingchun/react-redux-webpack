@@ -8,7 +8,7 @@ export default class MainSection extends Component {
     actions: PropTypes.object.isRequired
   };
 
-  render() {
+  render () {
     const { data : { pokemon, caughtPokemon, searchTerm }, actions } = this.props;
 
     return (

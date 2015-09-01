@@ -94,7 +94,7 @@
     "comma-spacing": [2, {"before": false, "after": true}],
     "comma-style": [2, "last"],
     "eol-last": 2,
-    "func-style": [2, "expression"],
+    "func-style": [0, "expression"],
     "max-nested-callbacks": [2, 3],
     "no-array-constructor": 2,
     "no-mixed-spaces-and-tabs": 2,

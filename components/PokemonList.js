@@ -8,8 +8,8 @@ export default class PokemonList extends Component {
     actions: PropTypes.object.isRequired
   };
 
-  render() {
-    const {pokemon, caughtPokemon, actions} = this.props;
+  render () {
+    const { pokemon, caughtPokemon, actions } = this.props;
 
     return (
       <table className="table table-striped">
@@ -25,10 +25,10 @@ export default class PokemonList extends Component {
         <tbody>
           {pokemon.map(pokemonObject =>
             <PokemonItem
-              key={pokemonObject.name}
-              pokemon={pokemonObject}
-              caught={caughtPokemon.indexOf(pokemonObject.name) > -1}
-              actions={actions} />
+              key={ pokemonObject.name }
+              pokemon={ pokemonObject }
+              caught={ caughtPokemon.indexOf(pokemonObject.name) > -1 }
+              actions={ actions } />
           )}
         </tbody>
       </table>

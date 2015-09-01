@@ -7,14 +7,13 @@ const initialState = {
   caughtPokemon : []
 };
 
-export default function pokemon(state = initialState, action) {
+export default function pokemon (state = initialState, action) {
 
-  var doFilter = (searchTerm=state.searchTerm, filters=state.filterOptions) => {
+  var doFilter = (searchTerm = state.searchTerm/*, filters = state.filterOptions*/) => {
     var filtered = Pokemon;
     if (searchTerm) {
-      filtered = Pokemon.filter(pokemon => pokemon.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+      filtered = Pokemon.filter(_pokemon => _pokemon.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
     }
-
     return filtered;
   };
 

@@ -7,6 +7,7 @@ var config = baseConfig();
 
 // plugins for production
 config.plugins = config.plugins.concat([
+  new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   }),

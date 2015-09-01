@@ -7,15 +7,15 @@ export default class PokemonItem extends Component {
     actions: PropTypes.object.isRequired
   };
 
-  render() {
-    const {pokemon, caught, actions} = this.props;
+  render () {
+    const { pokemon, caught, actions } = this.props;
 
     return (
       <tr className={caught ? 'success' : ''}>
-        <td>{pokemon.name}</td>
-        <td>{pokemon.type}</td>
-        <td>{pokemon.stage}</td>
-        <td>{pokemon.species}</td>
+        <td>{ pokemon.name }</td>
+        <td>{ pokemon.type }</td>
+        <td>{ pokemon.stage }</td>
+        <td>{ pokemon.species }</td>
         <td>
           {caught ?
             'Caught!' :

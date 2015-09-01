@@ -6,8 +6,8 @@ export default class FilterPokemon extends Component {
     actions: PropTypes.object.isRequired
   };
 
-  render() {
-    const {searchTerm, actions} = this.props;
+  render () {
+    const { searchTerm, actions } = this.props;
 
     return (
       <form>
@@ -17,7 +17,7 @@ export default class FilterPokemon extends Component {
             type="text"
             name="search"
             placeholder="Search Pokedex"
-            value={searchTerm}
+            value={ searchTerm }
             onChange={e => actions.searchTermChanged(e.target.value)} />
         </div>
       </form>

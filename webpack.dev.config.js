@@ -16,7 +16,6 @@ config.entry.bundle.unshift('webpack-dev-server/client?http://localhost:3000');
 // plugins for development
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('development')
   })

@@ -6,6 +6,6 @@ import './stylesheets/sample-less.less';
 
 
 
-React.render( <App /> ,
+React.render( <App />,
   document.getElementById('root')
 );
