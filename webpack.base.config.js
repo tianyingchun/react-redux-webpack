@@ -15,8 +15,9 @@ module.exports = function baseConfig() {
         // Extract css files
         // Use the autoprefixer-loader
         { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")},
-        // Optionally extract less files
-        // or any other compile-to-css language
+        // extract less files using stylus loader
+        { test: /\.styl$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!stylus-loader")},
+        // Optionally extract less files using less loader
         { test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!less-loader")}
       ]
     },

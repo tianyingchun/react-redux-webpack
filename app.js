@@ -1,7 +1,9 @@
 import React from 'react';
 import App from './containers/App';
-import './less/index.css';
-import './less/sample.less';
+import './stylesheets/index.css';
+import './stylesheets/sample-stylus.styl';
+import './stylesheets/sample-less.less';
+
 
 
 React.render( <App /> ,
