@@ -9,6 +9,19 @@ module.exports = function (grunt) {
       dev: webpackDevConfig,
       prod: webpackProdConfig
     },
+    // Eslint task for current project.
+    eslint: {
+      //http://eslint.org/docs/rules/
+      //https://www.npmjs.com/package/grunt-eslint
+      options: {
+        configFile: '.eslintrc'
+          // outputFile:''
+          // format: require('eslint-tap')
+      },
+      react: [
+        './app/**/*{.jsx,.js}'
+      ]
+    },
     'webpack-dev-server': {
       options: {
         webpack: webpackDevConfig,
